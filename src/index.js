@@ -1,27 +1,27 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import configureStore from './store/configureStore';
-import Root from './containers/Root';
+//import configureStore from './store/configureStore';
+import App from './App';
 
 const store = configureStore();
 
 render(
   <AppContainer
-    component={Root}
+    component={App}
     props={{ store }}
   />,
   document.getElementById('root')
 );
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
+  module.hot.accept('./App', () => {
     render(
       <AppContainer
-        component={require('./containers/Root').default}
+        component={require('./App').default}
         props={{ store }}
       />,
-      document.getElementById('root')
+      document.getElementById('app')
     );
   });
 }
